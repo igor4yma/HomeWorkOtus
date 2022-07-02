@@ -43,6 +43,13 @@ var text = `Как видите, он  спускается  по  лестни�
 	посидеть у огня и послушать какую-нибудь интересную сказку.
 		В этот вечер...`
 
+var testUpper string = "Большой остров, большой остров"
+
+var testLexical = `аа аа аа
+уу уу уу уу 
+фф фф фф фф
+вв вв вв вв вв`
+
 func TestTop10(t *testing.T) {
 	t.Run("no words in empty string", func(t *testing.T) {
 		require.Len(t, Top10(""), 0)
@@ -78,5 +85,35 @@ func TestTop10(t *testing.T) {
 			}
 			require.Equal(t, expected, Top10(text))
 		}
+	})
+
+	t.Run("upper case ", func(t *testing.T) {
+		if taskWithAsteriskIsCompleted {
+			expected := []string{
+				"большой", // 2
+				"остров",  // 1
+				"остров,", // 1
+			}
+			require.Equal(t, expected, Top10(testUpper))
+		} else {
+			expected := []string{
+				"Большой", // 1
+				"большой", // 1
+				"остров",  // 1
+				"остров,", // 1
+			}
+			require.Equal(t, expected, Top10(testUpper))
+		}
+	})
+
+	t.Run("lexicographical ", func(t *testing.T) {
+		expected := []string{
+			"вв", // 5
+			"уу", // 3
+			"фф", // 3
+			"аа", // 2
+
+		}
+		require.Equal(t, expected, Top10(testLexical))
 	})
 }
