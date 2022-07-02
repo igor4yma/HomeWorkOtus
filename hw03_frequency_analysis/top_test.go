@@ -43,7 +43,7 @@ var text = `Как видите, он  спускается  по  лестни�
 	посидеть у огня и послушать какую-нибудь интересную сказку.
 		В этот вечер...`
 
-var testUpper string = "Большой остров, большой остров"
+var testUpper = `Большой остров, большой остров`
 
 var testLexical = `аа аа аа
 уу уу уу уу 
@@ -87,7 +87,7 @@ func TestTop10(t *testing.T) {
 		}
 	})
 
-	t.Run("upper case ", func(t *testing.T) {
+	t.Run("upper case", func(t *testing.T) {
 		if taskWithAsteriskIsCompleted {
 			expected := []string{
 				"большой", // 2
@@ -106,7 +106,7 @@ func TestTop10(t *testing.T) {
 		}
 	})
 
-	t.Run("lexicographical ", func(t *testing.T) {
+	t.Run("lexicographical", func(t *testing.T) {
 		expected := []string{
 			"вв", // 5
 			"уу", // 3
