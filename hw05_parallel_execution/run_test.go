@@ -67,4 +67,9 @@ func TestRun(t *testing.T) {
 		require.Equal(t, runTasksCount, int32(tasksCount), "not all tasks were completed")
 		require.LessOrEqual(t, int64(elapsedTime), int64(sumTime/2), "tasks were run sequentially?")
 	})
+	t.Run("invalid n", func(t *testing.T) {
+		err := Run(nil, 0, 0)
+		require.Truef(t, errors.Is(err, ErrInvalidN), "actual err - %v", err)
+	})
+
 }
