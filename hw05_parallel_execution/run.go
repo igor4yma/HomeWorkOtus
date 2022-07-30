@@ -8,14 +8,13 @@ import (
 
 var (
 	ErrErrorsLimitExceeded = errors.New("errors limit exceeded")
-	ErrInvalidN            = errors.New("N should be positive")
+	ErrInvalidN            = errors.New("n should be positive")
 )
 
 type Task func() error
 
 // Run starts tasks in N goroutines and stops its work when receiving M errors from tasks.
 func Run(tasks []Task, n int, m int) error {
-
 	if n <= 0 {
 		return ErrInvalidN
 	}

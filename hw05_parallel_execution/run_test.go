@@ -75,5 +75,4 @@ func TestRun(t *testing.T) {
 		err := Run(nil, 2, 0)
 		require.Truef(t, errors.Is(err, ErrErrorsLimitExceeded), "actual err - %v", err)
 	})
-
 }
