@@ -110,6 +110,7 @@ func TestPipeline(t *testing.T) {
 
 		require.Equal(t, data, result)
 	})
+
 	t.Run("without stages - done case", func(t *testing.T) {
 		in := make(Bi)
 		done := make(Bi)
@@ -130,4 +131,5 @@ func TestPipeline(t *testing.T) {
 
 		require.Equal(t, data, result)
 	})
+
 }
