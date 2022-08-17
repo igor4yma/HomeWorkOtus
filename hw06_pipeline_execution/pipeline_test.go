@@ -131,5 +131,4 @@ func TestPipeline(t *testing.T) {
 
 		require.Equal(t, data, result)
 	})
-
 }
