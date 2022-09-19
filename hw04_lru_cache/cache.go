@@ -28,3 +28,22 @@ func NewCache(capacity int) Cache {
 		items:    make(map[Key]*ListItem, capacity),
 	}
 }
+
+func (c *lruCache) Set(key Key, value interface{}) bool {
+	item := cacheItem{key: key, value: value}
+	if listItem, ok := c.items[key]; ok {
+		c.queue.MoveToFront(listItem)
+	} else {
+		listItem := c.queue.PushFront(item)
+		c.items[key] = listItem
+	}
+	return false
+}
+func (c *lruCache) Get(key Key) (interface{}, bool) {
+	return nil, false
+}
+func (c *lruCache) Clear() {
+	c.items = make(map[Key]*ListItem)
+	c.queue = NewList()
+
+}
