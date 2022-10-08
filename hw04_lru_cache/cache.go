@@ -48,16 +48,15 @@ func (c *lruCache) Get(key Key) (interface{}, bool) {
 	return nil, false
 }
 
-func (cache *lruCache) Clear() {
-	cache.mutex.Lock()
-	defer cache.mutex.Unlock()
-	element := cache.queue.Back()
+func (c *lruCache) Clear() {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	element := c.queue.Back()
 	for element != nil {
-		delete(cache.items, element.Value.(cacheItem).key)
+		delete(c.items, element.Value.(cacheItem).key)
 		element = element.Next
 	}
-	cache.queue = NewList()
-
+	c.queue = NewList()
 }
 
 func NewCache(capacity int) Cache {
