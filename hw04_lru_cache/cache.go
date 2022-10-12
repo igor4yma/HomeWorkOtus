@@ -35,6 +35,13 @@ func (c *lruCache) Set(key Key, value interface{}) bool {
 
 	c.items[key] = item
 
+	if c.queue.Len() > c.capacity {
+		if item := c.queue.Back(); item != nil {
+			c.queue.Remove(item)
+			delete(c.items, item.Value.(*cacheItem).key)
+		}
+	}
+
 	return false
 }
 
@@ -49,13 +56,7 @@ func (c *lruCache) Get(key Key) (interface{}, bool) {
 }
 
 func (c *lruCache) Clear() {
-	c.mutex.Lock()
-	defer c.mutex.Unlock()
-	element := c.queue.Back()
-	for element != nil {
-		delete(c.items, element.Value.(cacheItem).key)
-		element = element.Next
-	}
+	c.items = make(map[Key]*ListItem, c.capacity)
 	c.queue = NewList()
 }
 
