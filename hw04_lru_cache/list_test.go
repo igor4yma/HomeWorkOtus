@@ -1,6 +1,6 @@
 package hw04lrucache
 
-import ( 
+import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
