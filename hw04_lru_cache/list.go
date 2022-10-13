@@ -1,6 +1,6 @@
 package hw04lrucache
 
-type List interface { 
+type List interface {
 	Len() int
 	Front() *ListItem
 	Back() *ListItem
