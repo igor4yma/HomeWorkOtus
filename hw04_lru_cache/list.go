@@ -1,6 +1,6 @@
 package hw04lrucache
 
-type List interface {
+type List interface { 
 	Len() int
 	Front() *ListItem
 	Back() *ListItem
@@ -17,8 +17,8 @@ type ListItem struct {
 }
 
 type list struct {
-	len         int
 	front, back *ListItem
+	len         int
 }
 
 func NewList() List {
@@ -39,13 +39,11 @@ func (l *list) Back() *ListItem {
 
 func (l *list) PushFront(v interface{}) *ListItem {
 	item := &ListItem{Value: v, Next: l.front}
-
 	if l.front != nil {
 		l.front.Prev = item
 	} else {
 		l.back = item
 	}
-
 	l.front = item
 	l.len++
 	return item
@@ -53,13 +51,11 @@ func (l *list) PushFront(v interface{}) *ListItem {
 
 func (l *list) PushBack(v interface{}) *ListItem {
 	item := &ListItem{Value: v, Prev: l.back}
-
 	if l.back != nil {
 		l.back.Next = item
 	} else {
-		l.front = item
+		l.back = item
 	}
-
 	l.back = item
 	l.len++
 	return item
