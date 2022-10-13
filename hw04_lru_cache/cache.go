@@ -9,12 +9,14 @@ type Cache interface {
 	Get(key Key) (interface{}, bool)
 	Clear()
 }
+
 type lruCache struct {
 	capacity int
 	queue    List
 	items    map[Key]*ListItem
 	mutex    sync.Mutex
 }
+
 type cacheItem struct {
 	key   Key
 	value interface{}
