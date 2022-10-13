@@ -40,7 +40,7 @@ func main() {
 		os.Stdin,
 		os.Stdout,
 	)
-
+ 
 	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
 
 	err := c.Connect()
