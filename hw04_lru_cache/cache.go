@@ -1,6 +1,6 @@
 package hw04lrucache
 
-import "sync" 
+import "sync"
 
 type Key string
 
