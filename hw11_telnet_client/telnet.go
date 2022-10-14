@@ -32,7 +32,7 @@ type TelnetClient interface {
 }
 
 func transferData(in io.Reader, out io.Writer) error {
-	if _, err := io.Copy(out, in);err != nil{
+	if _, err := io.Copy(out, in); err != nil{
 	 return ErrConnectionClosed
 	}
 	return nil
