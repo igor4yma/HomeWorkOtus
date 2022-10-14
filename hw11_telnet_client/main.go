@@ -44,8 +44,8 @@ func main() {
 
 	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
 
-	if err := client.Connect();err != nil {
-	 log.Fatalln(err)
+	if err := client.Connect(); err != nil {
+		log.Fatalln(err)
 	}
 	defer func() {
 		if err := client.Close(); err != nil {
