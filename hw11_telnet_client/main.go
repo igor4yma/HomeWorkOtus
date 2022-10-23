@@ -19,7 +19,7 @@ var (
 )
 
 const (
-	minLenArgs = 3
+	minLenArgs = 2
 	maxLenArgs = 4
 )
 
