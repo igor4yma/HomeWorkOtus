@@ -29,11 +29,11 @@ func init() {
 
 func main() {
 	flag.Parse()
-	if (len(os.Args) < minLenArgs) || (len(os.Args) > maxLenArgs) {
+	if (len(flag.Args()) < minLenArgs) || (len(flag.Args()) > maxLenArgs) {
 		log.Fatal(ErrNotEnoughArgs)
 	}
-	host := os.Args[len(os.Args)-2]
-	port := os.Args[len(os.Args)-1]
+	host :=flag.Arg((len(flag.Args()))-2)
+	port := flag.Arg((len(flag.Args()))-1)
 
 	client := NewTelnetClient(
 		net.JoinHostPort(host, port),
