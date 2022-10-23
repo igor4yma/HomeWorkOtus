@@ -32,6 +32,7 @@ func main() {
 	if (len(flag.Args()) < minLenArgs) || (len(flag.Args()) > maxLenArgs) {
 		log.Fatal(ErrNotEnoughArgs)
 	}
+	
 	host :=flag.Arg((len(flag.Args()))-2)
 	port := flag.Arg((len(flag.Args()))-1)
 
