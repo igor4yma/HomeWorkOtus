@@ -4,10 +4,11 @@
 (без поддержки команд, опций и протокола в целом).
 
 Примеры вызовов:
+
 ```bash
-$ go-telnet --timeout=10s host port
-$ go-telnet mysite.ru 8080
-$ go-telnet --timeout=3s 1.1.1.1 123
+go-telnet --timeout=10s host port
+go-telnet mysite.ru 8080
+go-telnet --timeout=3s 1.1.1.1 123
 ```
 
 * Программа должна подключаться к указанному хосту (IP или доменное имя) и порту по протоколу TCP.
@@ -26,6 +27,7 @@ $ go-telnet --timeout=3s 1.1.1.1 123
 Примеры работы:
 
 1) Сервер обрывает соединение
+
 ```bash
 $ nc -l localhost 4242
 Hello from NC
@@ -45,20 +47,25 @@ Bye-bye
 ```
 
 Здесь сообщения
+
 ```
 Hello from NC
 Bye, client!
 ```
+
 и операция Ctrl+C (Unix) относятся к `nc`,
 
 а сообщения
+
 ```
 I'm telnet client
 Bye-bye
 ```
+
 относятся к `go-telnet`.
 
 2) Клиент завершает ввод
+
 ```bash
 $ go-telnet localhost 4242
 ...Connected to localhost:4242
@@ -77,33 +84,41 @@ back!
 ```
 
 Здесь сообщения
+
 ```
 I
 will be
 back!
 ```
+
 и операция Ctrl+D (Unix) относятся к `go-telnet`,
 
 Сообщения
+
 ```
 ...Connected to localhost:4242
 ...Connection was closed by peer
 ...EOF
 ```
+
 являются служебными.
 Они **выводятся в STDERR** и не тестируются `test.sh`, их формат на усмотрение автора.
 
 ### Критерии оценки
-- Пайплайн зелёный - 4 балла
-- Добавлены юнит-тесты - до 2 баллов
-- Понятность и чистота кода - до 4 баллов
+
+* Пайплайн зелёный - 4 балла
+
+* Добавлены юнит-тесты - до 2 баллов
+* Понятность и чистота кода - до 4 баллов
 
 #### Зачёт от 7 баллов
 
 ### Подсказки
-- Для ручного тестирования рекомендуется использовать nc (как в `test.sh`).
-- `flag.DurationVar`
-- `net.JoinHostPort`, `net.DialTimeout`
-- `bufio` / `io`
-- `signal.NotifyContext`
-- https://stackoverflow.com/questions/51317968/write-on-a-closed-net-conn-but-returned-nil-error
+
+* Для ручного тестирования рекомендуется использовать nc (как в `test.sh`).
+
+* `flag.DurationVar`
+* `net.JoinHostPort`, `net.DialTimeout`
+* `bufio` / `io`
+* `signal.NotifyContext`
+* <https://stackoverflow.com/questions/51317968/write-on-a-closed-net-conn-but-returned-nil-error>
